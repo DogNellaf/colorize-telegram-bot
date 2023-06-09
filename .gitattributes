@@ -1,0 +1,2 @@
+model.caffemodel filter=lfs diff=lfs merge=lfs -text
+models/model.caffemodel filter=lfs diff=lfs merge=lfs -text
