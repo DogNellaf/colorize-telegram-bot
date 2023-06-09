@@ -19,7 +19,7 @@ def start(message):
         bot.send_message(message.from_user.id, 'Напиши /help')
 
 def git(message):
-    bot.send_message(message.from_user.id, 'http://text.ru')
+    bot.send_message(message.from_user.id, 'https://github.com/DogNellaf/colorize-telegram-bot')
 
 def menu(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
