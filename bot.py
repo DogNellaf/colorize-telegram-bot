@@ -32,16 +32,19 @@ def menu(message):
     bot.send_message(message.chat.id, "Меню".format(message.from_user), reply_markup=markup)
 
 def colorize(message):
-    file_id = message.photo[-1].file_id
-    file_info = bot.get_file(file_id)
-    downloaded_file = bot.download_file(file_info.file_path)
+    try:
+        file_id = message.photo[-1].file_id
+        file_info = bot.get_file(file_id)
+        downloaded_file = bot.download_file(file_info.file_path)
 
-    with open(f"{file_id}.jpg", 'wb') as new_file:
-        new_file.write(downloaded_file)
+        with open(f"{file_id}.jpg", 'wb') as new_file:
+            new_file.write(downloaded_file)
 
-    bot.send_message(message.from_user.id, "Фото получено, обрабатываю....")
-    colarization.colorize(f"{file_id}.jpg")
-    bot.send_photo(message.chat.id, open(f"{file_id}.jpg", 'rb'))
+        bot.send_message(message.from_user.id, "Фото получено, обрабатываю....")
+        colarization.colorize(f"{file_id}.jpg")
+        bot.send_photo(message.chat.id, open(f"{file_id}.jpg", 'rb'))
+    except:
+        bot.send_message(message.from_user.id, "Выберите новую команду еще раз")
 
 def info(message):
     bot.send_message(message.from_user.id, "Разработал Сидоров Данил Михайлович, студент группы 1мБД2 в 2023 году")
